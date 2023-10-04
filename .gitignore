@@ -1,0 +1,28 @@
+# Direktori node_modules yang berisi dependensi
+node_modules/
+
+# Berkas log
+npm-debug.log*
+
+# Direktori dist atau build (jika Anda memiliki proses build)
+dist/
+build/
+
+# Berkas konfigurasi environment yang mungkin berisi informasi sensitif
+.env
+
+# Berkas cache dari berbagai tools
+.cache/
+*.cache
+
+# Direktori yang digunakan oleh beberapa editor atau OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Berkas lain yang mungkin Anda tidak ingin masukkan (tergantung kebutuhan)
+*.pem
+*.cert
+*.key
