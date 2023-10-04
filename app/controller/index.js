@@ -6,8 +6,16 @@ const upload = multer({ dest: "uploads/" });
 //let users = [];
 const users = require ('../model/users')
 
+
 function getUsers(req, res) {
+  users.findAll() 
+  .then((users) => {
   res.json(users);
+})
+.catch((error) => {
+  console.error("Error while getting users:", error);
+  res.status(500).json({ error: "An error occurred" });
+});
 }
 
 function addUsers(req, res) {
