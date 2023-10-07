@@ -7,5 +7,7 @@ const upload = multer({ dest: 'uploads/' });
 router.get('/users', controller.getUsers);
 router.post('/register', upload.single('image'), controller.addUsers);
 router.post('/login', controller.setUsers);
+router.post('/contact-us', controller.setContacts);
+router.post('/update', controller.updateProfile);
 
 module.exports = router;
