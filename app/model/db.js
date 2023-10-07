@@ -54,7 +54,9 @@ const contacts = connection.define("contacts", {
     type: sequelize.DataTypes.TEXT,
     allowNull: false,
   },
-  timestamp:false,
+
+  },{
+  timestamps:false,
   freezeTableName: true,
 });
 

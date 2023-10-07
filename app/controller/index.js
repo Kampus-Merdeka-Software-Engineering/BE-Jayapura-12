@@ -51,15 +51,6 @@ function addUsers(req, res) {
       .then(() => {
           res.status(200).json({ message: "Registrasi berhasil" });
         })
-      .then((data) => {
-        db.contacts.create({
-          user_id: data.id,
-          nama: name,
-          email,
-          number,
-          message,
-        })
-      
         .catch((error) => {
           console.error("Error while creating user:", error);
           res.status(500).json({ error: "An error occurred" });
@@ -69,14 +60,7 @@ function addUsers(req, res) {
       console.error("Error while checking existing user:", error);
       res.status(500).json({ error: "An error occurred" });
     });
-  })
-    
-    // db.users.create({
-    //   nama: req.body.name,
-    //   email: req.body.email,
-    //   pass: req.body.pass,
-    // })
-}
+  }
 
 function setUsers(req, res) {
   const { email, pass } = req.body;
@@ -99,7 +83,7 @@ function setUsers(req, res) {
           return res.status(401).json({ message: "Password salah" });
         }
 
-        res.status(200).json({ message: "Login berhasil" });
+        res.status(200).json({ message: "Login berhasil",data:users.id });
       });
     })
     .catch((error) => {
@@ -110,21 +94,18 @@ function setUsers(req, res) {
 
 function setContacts(req, res) {
   
-  const { name, email, number, message } = req.body;
+  const { id, name, email, number, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ message: "Semua kolom harus diisi" });
   }
-
-  const user_id = req.user.id;
-  console.log("user_id", user_id);
   
   const newContact = {
     nama: name,
     email,
     number,
     message,
-    user_id
+    user_id: id
   };
 
   db.contacts
