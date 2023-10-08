@@ -92,6 +92,18 @@ function setUsers(req, res) {
     });
 }
 
+function getContacts(req, res) {
+  db.contacts
+    .findAll()
+    .then((contacts) => {
+      res.json(contacts);
+    })
+    .catch((error) => {
+      console.error("Error while getting users:", error);
+      res.status(500).json({ error: "An error occurred" });
+    });
+}
+
 function setContacts(req, res) {
   
   const { id, name, email, number, message } = req.body;
@@ -111,7 +123,7 @@ function setContacts(req, res) {
   db.contacts
     .create(newContact)
     .then(() => {
-      res.status(200).json({ message: "Pesan Anda telah berhasil dikirim" });
+      res.status(200).json({ message: "Pesan Anda telah berhasil dikirim"});
     })
     .catch((error) => {
       console.error("Error while saving contact message:", error);
@@ -160,7 +172,7 @@ function updateProfile(req, res) {
             db.users
               .create(updatedUser)
               .then(() => {
-                res.status(200).json({ message: "Profil berhasil diperbarui" });
+                res.status(200).json({ message: "Profil berhasil diperbarui"});
               })
               .catch((error) => {
                 console.error("Error while creating updated user:", error);
@@ -183,6 +195,7 @@ module.exports = {
   getUsers,
   addUsers,
   setUsers,
+  getContacts,
   setContacts,
   updateProfile
 }
