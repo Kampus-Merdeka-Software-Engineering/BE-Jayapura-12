@@ -23,6 +23,6 @@ build/
 *.swo
 
 # Berkas lain yang mungkin Anda tidak ingin masukkan (tergantung kebutuhan)
-*.pem
+mysql-group12 ca.pem
 *.cert
 *.key
